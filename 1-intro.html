@@ -9,21 +9,51 @@
 // get root
 const rootElement = document.getElementById("root");
 
-// Vanilla JS version
+// 1. Vanilla JS version
 // new element to append to root
 // const element = document.createElement("div");
 // apply couple of properties
 // element.textContent = "Hello root";
 // element.className = "container";
 
-// React version
+// 2. React version
 // const element = React.createElement("div", {
 //   className: "container",
 //   children: ["Hello", "react root"]
 // });
 
-// JSX version using babel-standalone (type="text/babel")
-const element = <div className="container">Hello JSX</div>;
+// 3. JSX version using babel-standalone (type="text/babel")
+// const message = "Hello JSX";
+// anything inside the {} is javascript land
+// const element = <div className="container">{message}</div>;
+
+// 4. adding props
+// const props = {
+//   className: "container",
+//   children: "hello props"
+// };
+// object spread
+// const element = (
+//   <div className="overridden-by-props-if-placed-infront-of-props" {...props} />
+// );
+
+// 5. components
+// const message = props => <div>{props.msg}</div>;
+// const element = (
+//   <div className="container">
+//     {message({ msg: "hi there!" })}
+//     {message({ msg: "nice to see you!" })}
+//   </div>
+// );
+
+// 5. components using jsx
+const Message = props => <div>{props.children}</div>;
+const element = (
+  <div className="container">
+    <Message>hi there!</Message>
+    <Message>nice to see you!</Message>
+  </div>
+);
 
 // render it
 ReactDOM.render(element, rootElement);
